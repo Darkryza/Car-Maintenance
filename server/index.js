@@ -1,15 +1,28 @@
 import express from "express";
 import dotenv from "dotenv";
+import mysql from "mysql2";
 
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5484;
+const port = process.env.PORT || 5484;
 
-app.get("/", (req, res) => {
-  res.send("Hi from server");
+const conn = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "carmaintenance",
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+conn.connect((err) => {
+  if (err) {
+    console.log(`DB Connection failed: ${err}`);
+    return;
+  }
+
+  console.log("DB Connected");
+
+  app.listen(port, () => {
+    console.log(`Server running on ${port}`);
+  });
 });
