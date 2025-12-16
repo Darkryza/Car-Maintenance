@@ -32,4 +32,15 @@ app.listen(port, () => {
 
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
+  const query = "SELECT * FROM USERS WHERE username=? AND password=?";
+  conn.query(query, [username, password], (err, result) => {
+    if (err) {
+      console.log("DB error", err);
+      return res.json({ message: "DB error" });
+    }
+    if (result.length == 0) {
+      return res.status(401).json({ message: "No User" });
+    }
+    return res.status(201).json({ message: "Login success" });
+  });
 });

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import "./LoginPage.css";
 import axios from "axios";
 
@@ -7,6 +8,8 @@ function LoginPage() {
     username: "",
     password: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +24,12 @@ function LoginPage() {
     e.preventDefault();
     axios
       .post("http://localhost:5484/login", login)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        alert(res.data.message);
+        if (res.status === 201) {
+          navigate("/home");
+        }
+      })
       .catch((err) => console.log(err));
   };
 
@@ -47,6 +55,7 @@ function LoginPage() {
           value={login.password}
         />
         <button className="login-btn">Submit</button>
+        <Link to="register">Create account</Link>
       </form>
     </div>
   );
