@@ -1,0 +1,40 @@
+.register-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-container {
+  background-color: rgb(35, 36, 36);
+  width: 50%;
+  height: auto;
+  padding: 20px 50px;
+  display: flex;
+  flex-direction: column;
+  font-size: 25px;
+}
+
+.register-container label {
+  margin-bottom: 10px;
+}
+
+.register-container input {
+  padding: 10px;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.register-container button {
+  margin: auto;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.register-container button:hover {
+  background-color: rgb(62, 109, 151);
+  transition: 0.2s;
+}
