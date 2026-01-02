@@ -1,24 +1,38 @@
+import { Link, Outlet } from "react-router-dom";
+import logo from "../assets/CARMAINT.png";
 import "./Dashboard.css";
 
 const Dashboard = () => {
   return (
     <div className="page dashboard-page">
       <div className="dashboard-sidebar">
-        <div className="dashboard-logo">
-          <img src="CARMAINT.png" />
-          <h1>CARMAINT</h1>
-        </div>
+        <Link to="/dashboard" className="link">
+          <div className="dashboard-logo">
+            <img src={logo} />
+            <h1>CARMAINT</h1>
+          </div>
+        </Link>
         <ul>
-          <li>Services</li>
-          <li>Reminder</li>
-          <li>Fund</li>
-          <li>Wishlist</li>
+          <Link to="/dashboard/services" className="link">
+            Services
+          </Link>
+          <Link to="/dashboard/reminder" className="link">
+            Reminder
+          </Link>
+          <Link to="/dashboard/fund" className="link">
+            Fund
+          </Link>
+          <Link to="/dashboard/wishlist" className="link">
+            Wishlist
+          </Link>
         </ul>
       </div>
       <div className="dashboard-navbar-top">
         <h1>DASHBOARD</h1>
       </div>
-      <div className="content">{/* <Outlet /> */}</div>
+      <div className="content">
+        <Outlet />
+      </div>
     </div>
   );
 };
