@@ -20,21 +20,27 @@ function LoginPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    axios
-      .post("http://localhost:5484/login", login)
-      .then((res) => {
+    try {
+      const res = await axios.post("http://localhost:5484/login", login);
+      if (res.data.status) {
         alert(res.data.message);
-        if (res.status === 201) {
-          navigate("/home");
-        }
-      })
-      .catch((err) => console.log(err));
+        navigate("/home");
+      } else {
+        alert(res.data.message);
+      }
+    } catch (err) {
+      if (err.response) {
+        alert(err.response.data.message);
+      } else {
+        alert("Server error");
+      }
+    }
   };
 
   return (
-    <div className="LoginPage">
+    <div className="loginPage">
       <form className="login-container" onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input
@@ -55,7 +61,9 @@ function LoginPage() {
           value={login.password}
         />
         <button className="login-btn">Submit</button>
-        <Link to="register">Create account</Link>
+        <Link to="register" className="register-link">
+          Create account
+        </Link>
       </form>
     </div>
   );
