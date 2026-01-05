@@ -69,7 +69,9 @@ const RegisterPage = () => {
           onChange={handleChange}
         />
         <button>Submit</button>
-        <Link to="/">Back to login</Link>
+        <Link to="/" className="login-link">
+          Back to login
+        </Link>
       </form>
     </div>
   );

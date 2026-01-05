@@ -40,7 +40,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="loginPage">
+    <div className="page loginPage">
       <form className="login-container" onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input
