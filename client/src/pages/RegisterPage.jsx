@@ -28,9 +28,12 @@ const RegisterPage = () => {
           "http://localhost:5484/register",
           register
         );
-        if (res.status === 201) {
+        if (res.data.status) {
           alert(res.data.message);
           navigate("/");
+        } else {
+          alert("error register");
+          console.log();
         }
       } catch (err) {
         if (err.response) {

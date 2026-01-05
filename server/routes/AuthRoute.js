@@ -13,14 +13,21 @@ router.post("/login", (req, res) => {
       return res.json({ status: false, message: "DB error" });
     }
     if (result.length > 0) {
+      const id = result[0].id;
       const username = result[0].username;
       const token = jwt.sign(
         {
+          id: id,
           username: username,
         },
-        process.env.JWT_TOKEN,
-        { expiresIn: process.env.JWT_EXPIRE }
+        process.env.JWT_SECRETKEY,
+        { expiresIn: process.env.JWT_EXPIRES }
       );
+      return res.json({
+        status: true,
+        message: "Login successful",
+        token: token,
+      });
     } else {
       return res
         .status(401)
@@ -37,7 +44,11 @@ router.post("/register", (req, res) => {
       console.log("DB error", err);
       return res.json({ message: "DB error" });
     }
-    return res.status(201).json({ message: "Register success" });
+    if (result)
+      return res
+        .status(201)
+        .json({ status: true, message: "Register success" });
+    else return res.json({ status: false });
   });
 });
 
