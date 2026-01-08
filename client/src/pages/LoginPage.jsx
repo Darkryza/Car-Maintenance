@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./LoginPage.css";
 import axios from "axios";
+import { useEffect } from "react";
 
 function LoginPage() {
   const [login, setLogin] = useState({
@@ -40,6 +41,12 @@ function LoginPage() {
     }
   };
 
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      navigate("/dashboard", { replace: true });
+    }
+  }, []);
   return (
     <div className="page loginPage">
       <form className="login-container" onSubmit={handleSubmit}>

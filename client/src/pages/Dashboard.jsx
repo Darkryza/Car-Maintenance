@@ -13,11 +13,14 @@ const Dashboard = () => {
         if (!token) {
           navigate("/");
         }
-        await axios.get("http://localhost:5484/auth/dashboard", {
+        const res = await axios.get("http://localhost:5484/auth/dashboard", {
           headers: {
             Authorization: `bearer ${token}`,
           },
         });
+        if (res.data.status) {
+          console.log(res.data);
+        }
       } catch (err) {
         console.log(err);
       }
