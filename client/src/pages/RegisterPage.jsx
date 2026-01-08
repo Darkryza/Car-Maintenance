@@ -25,7 +25,7 @@ const RegisterPage = () => {
     if (register.password === register.confirmPassword) {
       try {
         const res = await axios.post(
-          "http://localhost:5484/register",
+          "http://localhost:5484/auth/register",
           register
         );
         if (res.data.status) {

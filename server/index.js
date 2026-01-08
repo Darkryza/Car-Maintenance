@@ -15,4 +15,4 @@ app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
 
-app.use(authRouter);
+app.use("/auth", authRouter);

@@ -8,13 +8,21 @@ import ReminderPage from "./pages/ReminderPage";
 import FundPage from "./pages/FundPage";
 import WishlistPage from "./pages/WishlistPage";
 import "./App.css";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 function App() {
   return (
     <Routes>
       <Route index element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
-      <Route path="/dashboard" element={<Dashboard />}>
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      >
         <Route path="" element={<HomePage />} />
         <Route path="/dashboard/services" element={<ServicesPage />} />
         <Route path="/dashboard/reminder" element={<ReminderPage />} />

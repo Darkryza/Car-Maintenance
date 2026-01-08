@@ -1,8 +1,33 @@
-import { Link, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useNavigate, Outlet } from "react-router-dom";
+import axios from "axios";
 import logo from "../assets/CARMAINT.png";
 import "./Dashboard.css";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const res = await axios.get("http://localhost:5484/auth/dashboard", {
+          headers: {
+            Authorization: `bearer ${token}`,
+          },
+        });
+        if (res.data.status) {
+          console.log(res.data.user);
+        }
+
+        if (!res.data.status) {
+          navigate("/");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchUser();
+  }, []);
   return (
     <div className="page dashboard-page">
       <div className="dashboard-sidebar">

@@ -2,6 +2,7 @@ import express from "express";
 import conn from "../utils/db.js";
 import jwt from "jsonwebtoken";
 import bycrypt from "bcrypt";
+import verifyToken from "../middleware/verifyToken.js";
 
 const router = express.Router();
 
@@ -68,6 +69,32 @@ router.post("/register", (req, res) => {
       else return res.json({ status: false });
     });
   });
+});
+
+router.get("/dashboard", verifyToken, (req, res) => {
+  try {
+    const [id] = req.body;
+    const query = "SELECT * FROM users WHERE id=?";
+    conn.query(query, [id], (err, result) => {
+      if (err) {
+        console.log(err);
+        return res.json({ status: false, message: "Error on server side" });
+      }
+      if (result.length === 0) {
+        return res.json({ status: false, message: "User not found" });
+      }
+      if (result.length > 0) {
+        const user = result[0];
+        return res.json({
+          status: true,
+          message: "User authorized by server",
+          user: user,
+        });
+      }
+    });
+  } catch (err) {
+    return res.json({ status: false, message: "Error on server side" });
+  }
 });
 
 export { router as authRouter };
