@@ -10,18 +10,14 @@ const Dashboard = () => {
     const fetchUser = async () => {
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get("http://localhost:5484/auth/dashboard", {
+        if (!token) {
+          navigate("/");
+        }
+        await axios.get("http://localhost:5484/auth/dashboard", {
           headers: {
             Authorization: `bearer ${token}`,
           },
         });
-        if (res.data.status) {
-          console.log(res.data.user);
-        }
-
-        if (!res.data.status) {
-          navigate("/");
-        }
       } catch (err) {
         console.log(err);
       }

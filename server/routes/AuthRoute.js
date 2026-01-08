@@ -73,7 +73,7 @@ router.post("/register", (req, res) => {
 
 router.get("/dashboard", verifyToken, (req, res) => {
   try {
-    const [id] = req.body;
+    const { id, username } = req.user;
     const query = "SELECT * FROM users WHERE id=?";
     conn.query(query, [id], (err, result) => {
       if (err) {
@@ -88,7 +88,7 @@ router.get("/dashboard", verifyToken, (req, res) => {
         return res.json({
           status: true,
           message: "User authorized by server",
-          user: user,
+          user: { id: id, username: username },
         });
       }
     });

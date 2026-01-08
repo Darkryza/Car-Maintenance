@@ -7,11 +7,11 @@ const verifyToken = (req, res, next) => {
       return res.json({ status: false, message: "No token found" });
     }
     const decoded = jwt.verify(token, process.env.JWT_SECRETKEY);
-    req.body.id = decoded.id;
-    req.body.username = decoded.username;
+    req.user = decoded;
     next();
   } catch (err) {
     console.log(err);
+    return res.json({ status: false, message: "Token error" });
   }
 };
 
