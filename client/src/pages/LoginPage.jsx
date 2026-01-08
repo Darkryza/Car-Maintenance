@@ -26,7 +26,8 @@ function LoginPage() {
       const res = await axios.post("http://localhost:5484/login", login);
       if (res.data.status) {
         alert(res.data.message);
-        navigate("/home");
+        localStorage.setItem("token", res.data.token);
+        navigate("/dashboard");
       } else {
         alert(res.data.message);
       }
@@ -40,7 +41,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="loginPage">
+    <div className="page loginPage">
       <form className="login-container" onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input
