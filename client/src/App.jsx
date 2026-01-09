@@ -9,12 +9,27 @@ import FundPage from "./pages/FundPage";
 import WishlistPage from "./pages/WishlistPage";
 import "./App.css";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import GuestRoute from "./pages/GuestRoute";
 
 function App() {
   return (
     <Routes>
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<RegisterPage />} />
+      <Route
+        path="/login"
+        element={
+          <GuestRoute>
+            <LoginPage />
+          </GuestRoute>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <GuestRoute>
+            <RegisterPage />
+          </GuestRoute>
+        }
+      />
       <Route
         path="/"
         element={

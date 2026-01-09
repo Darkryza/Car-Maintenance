@@ -78,7 +78,7 @@ router.post("/register", (req, res) => {
   });
 });
 
-router.get("/dashboard", verifyToken, (req, res) => {
+router.get("/isAuth", verifyToken, (req, res) => {
   try {
     const { id, username } = req.user;
     const query = "SELECT * FROM users WHERE id=?";

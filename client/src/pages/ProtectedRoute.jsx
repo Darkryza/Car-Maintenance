@@ -3,27 +3,26 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({ children }) => {
-  const [loading, setLoading] = useState(true);
-  const [userAuth, setUserAuth] = useState(false);
+  const [userAuth, setUserAuth] = useState(null); // null = still loading
+
   useEffect(() => {
     const verifyAuth = async () => {
       try {
-        const res = await axios.get("http://localhost:5484/auth/dashboard", {
+        const res = await axios.get("http://localhost:5484/auth/isAuth", {
           withCredentials: true,
         });
-        if (res.data.status) {
-          setUserAuth(true);
-        }
+        const { username } = res.data.user;
+        setUserAuth(res.data.status);
+        localStorage.setItem("username", username);
       } catch (err) {
         console.log(err);
-      } finally {
-        setLoading(true);
+        setUserAuth(false);
       }
     };
     verifyAuth();
   }, []);
 
-  if (loading) return <div>Loading... </div>;
+  if (userAuth === null) return <div>Loading...</div>; // tunggu server response
   return userAuth ? children : <Navigate to="/login" replace />;
 };
 

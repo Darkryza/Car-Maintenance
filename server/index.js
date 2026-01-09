@@ -7,6 +7,7 @@ import { authRouter } from "./routes/AuthRoute.js";
 dotenv.config();
 
 const app = express();
+
 app.use(express.json());
 app.use(
   cors({
@@ -16,10 +17,11 @@ app.use(
 );
 app.use(cookieParser());
 
-const port = process.env.PORT || 5484;
+// routes
+app.use("/auth", authRouter);
 
+// start server
+const port = process.env.PORT || 5484;
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
-
-app.use("/auth", authRouter);
