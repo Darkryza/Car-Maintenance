@@ -26,7 +26,7 @@ const Dashboard = () => {
       }
     };
     fetchUser();
-  }, []);
+  }, [navigate]);
   return (
     <div className="page dashboard-page">
       <div className="dashboard-sidebar">
