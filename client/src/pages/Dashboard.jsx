@@ -13,6 +13,7 @@ const Dashboard = () => {
         { withCredentials: true }
       );
       if (res.data.status) {
+        alert(res.data.message);
         navigate("/login");
       }
     } catch (err) {
@@ -41,7 +42,7 @@ const Dashboard = () => {
           <Link to="/wishlist" className="link">
             Wishlist
           </Link>
-          <button className="link" onClick={handleLogout}>
+          <button className="logout" onClick={handleLogout}>
             Logout
           </button>
         </ul>

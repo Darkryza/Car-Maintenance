@@ -104,4 +104,13 @@ router.get("/isAuth", verifyToken, (req, res) => {
   }
 });
 
+router.post("/logout", (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: false,
+    sameSite: "lax",
+  });
+  return res.json({ status: true, message: "Logout Successful" });
+});
+
 export { router as authRouter };

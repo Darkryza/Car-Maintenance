@@ -23,6 +23,10 @@
   text-decoration: none;
   width: 100%;
   height: 100%;
+}
+
+.link,
+.logout {
   font-size: 1rem;
 }
 
@@ -63,9 +67,20 @@
   cursor: pointer;
 }
 
+.dashboard-sidebar ul .logout {
+  background-color: transparent;
+  color: red;
+  cursor: pointer;
+}
+
 .dashboard-sidebar ul .link:hover {
   background-color: rgb(59, 14, 59);
   transition: 0.3s;
+}
+
+.dashboard-sidebar ul .logout:hover {
+  background-color: transparent;
+  color: rgb(255, 255, 255);
 }
 
 .content {
