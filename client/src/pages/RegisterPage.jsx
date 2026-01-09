@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
 import axios from "axios";
@@ -46,13 +46,6 @@ const RegisterPage = () => {
       alert("Your confirm password not same as your password");
     }
   };
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      navigate("/dashboard", { replace: true });
-    }
-  }, []);
   return (
     <div className="page register-page">
       <form className="register-container" onSubmit={handleSubmit}>
@@ -78,7 +71,7 @@ const RegisterPage = () => {
           onChange={handleChange}
         />
         <button>Submit</button>
-        <Link to="/" className="login-link">
+        <Link to="/login" className="login-link">
           Back to login
         </Link>
       </form>

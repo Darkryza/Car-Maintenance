@@ -13,21 +13,21 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 function App() {
   return (
     <Routes>
-      <Route index element={<LoginPage />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route
-        path="/dashboard"
+        path="/"
         element={
           <ProtectedRoute>
             <Dashboard />
           </ProtectedRoute>
         }
       >
-        <Route path="" element={<HomePage />} />
-        <Route path="/dashboard/services" element={<ServicesPage />} />
-        <Route path="/dashboard/reminder" element={<ReminderPage />} />
-        <Route path="/dashboard/fund" element={<FundPage />} />
-        <Route path="/dashboard/wishlist" element={<WishlistPage />} />
+        <Route index element={<HomePage />} />
+        <Route path="services" element={<ServicesPage />} />
+        <Route path="reminder" element={<ReminderPage />} />
+        <Route path="fund" element={<FundPage />} />
+        <Route path="wishlist" element={<WishlistPage />} />
       </Route>
     </Routes>
   );

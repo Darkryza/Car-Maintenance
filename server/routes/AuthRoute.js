@@ -35,10 +35,17 @@ router.post("/login", (req, res) => {
           process.env.JWT_SECRETKEY,
           { expiresIn: process.env.JWT_EXPIRES }
         );
+
+        res.cookie("token", token, {
+          httpOnly: true,
+          secure: false,
+          sameSite: "lax",
+          maxAge: 1000 * 60 * 60,
+        });
+
         return res.json({
           status: true,
           message: "Login successful",
-          token: token,
         });
       });
     } else {

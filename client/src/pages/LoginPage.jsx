@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./LoginPage.css";
 import axios from "axios";
-import { useEffect } from "react";
 
 function LoginPage() {
   const [login, setLogin] = useState({
@@ -24,11 +23,12 @@ function LoginPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5484/auth/login", login);
+      const res = await axios.post("http://localhost:5484/auth/login", login, {
+        withCredentials: true,
+      });
       if (res.data.status) {
         alert(res.data.message);
-        localStorage.setItem("token", res.data.token);
-        navigate("/dashboard");
+        navigate("/");
       } else {
         alert(res.data.message);
       }
@@ -40,13 +40,6 @@ function LoginPage() {
       }
     }
   };
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      navigate("/dashboard", { replace: true });
-    }
-  }, []);
   return (
     <div className="page loginPage">
       <form className="login-container" onSubmit={handleSubmit}>
@@ -69,7 +62,7 @@ function LoginPage() {
           value={login.password}
         />
         <button className="login-btn">Submit</button>
-        <Link to="register" className="register-link">
+        <Link to="/register" className="register-link">
           Create account
         </Link>
       </form>

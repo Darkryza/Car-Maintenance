@@ -1,32 +1,8 @@
-import { useEffect } from "react";
-import { Link, useNavigate, Outlet } from "react-router-dom";
-import axios from "axios";
+import { Link, Outlet } from "react-router-dom";
 import logo from "../assets/CARMAINT.png";
 import "./Dashboard.css";
 
 const Dashboard = () => {
-  const navigate = useNavigate();
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        if (!token) {
-          navigate("/");
-        }
-        const res = await axios.get("http://localhost:5484/auth/dashboard", {
-          headers: {
-            Authorization: `bearer ${token}`,
-          },
-        });
-        if (res.data.status) {
-          console.log(res.data);
-        }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchUser();
-  }, [navigate]);
   return (
     <div className="page dashboard-page">
       <div className="dashboard-sidebar">
@@ -37,16 +13,16 @@ const Dashboard = () => {
           </div>
         </Link>
         <ul>
-          <Link to="/dashboard/services" className="link">
+          <Link to="/services" className="link">
             Services
           </Link>
-          <Link to="/dashboard/reminder" className="link">
+          <Link to="/reminder" className="link">
             Reminder
           </Link>
-          <Link to="/dashboard/fund" className="link">
+          <Link to="/fund" className="link">
             Fund
           </Link>
-          <Link to="/dashboard/wishlist" className="link">
+          <Link to="/wishlist" className="link">
             Wishlist
           </Link>
         </ul>
