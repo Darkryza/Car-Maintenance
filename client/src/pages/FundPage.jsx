@@ -1,7 +1,7 @@
 import React from "react";
 
 const FundPage = () => {
-  return <div>FundPage</div>;
+  return <div></div>;
 };
 
 export default FundPage;

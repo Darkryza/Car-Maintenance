@@ -1,7 +1,7 @@
 import React from "react";
 
 const ReminderPage = () => {
-  return <div>ReminderPage</div>;
+  return <div></div>;
 };
 
 export default ReminderPage;

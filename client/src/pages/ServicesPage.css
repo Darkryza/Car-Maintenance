@@ -1,0 +1,25 @@
+.service-page {
+  display: grid;
+  grid-template-rows: 50px 1fr;
+}
+
+.top {
+  grid-row: 1/2;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+.table {
+  grid-row: 2/3;
+}
+
+.add-service {
+  text-decoration: none;
+}
+
+.add-service:hover {
+  color: var(--purple4);
+}

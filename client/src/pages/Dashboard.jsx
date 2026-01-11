@@ -1,4 +1,4 @@
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/CARMAINT.png";
 import "./Dashboard.css";
 import axios from "axios";
@@ -18,6 +18,24 @@ const Dashboard = () => {
       }
     } catch (err) {
       console.log(err);
+    }
+  };
+  const location = useLocation();
+
+  const getTitle = () => {
+    switch (location.pathname) {
+      case "/":
+        return "DASHBOARD";
+      case "/services":
+        return "SERVICES";
+      case "/reminder":
+        return "REMINDER";
+      case "/fund":
+        return "FUND";
+      case "/wishlist":
+        return "WISHLIST";
+      default:
+        return "DASHBOARD";
     }
   };
   return (
@@ -48,7 +66,7 @@ const Dashboard = () => {
         </ul>
       </div>
       <div className="dashboard-navbar-top">
-        <h1>DASHBOARD</h1>
+        <h1>{getTitle()}</h1>
       </div>
       <div className="content">
         <Outlet />

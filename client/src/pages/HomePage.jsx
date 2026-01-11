@@ -5,7 +5,7 @@ function HomePage() {
     <div className="page">
       <div className="top-summary-quantity">
         <div className="quantity-service"></div>
-        .spend-service
+        <div className="spend-service"></div>
       </div>
     </div>
   );
