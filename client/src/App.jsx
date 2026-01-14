@@ -10,6 +10,7 @@ import WishlistPage from "./pages/WishlistPage";
 import "./App.css";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import GuestRoute from "./pages/GuestRoute";
+import AddServicePage from "./pages/AddServicePage";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
       >
         <Route index element={<HomePage />} />
         <Route path="services" element={<ServicesPage />} />
+        <Route path="addService" element={<AddServicePage />} />
         <Route path="reminder" element={<ReminderPage />} />
         <Route path="fund" element={<FundPage />} />
         <Route path="wishlist" element={<WishlistPage />} />

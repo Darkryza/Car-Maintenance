@@ -28,6 +28,8 @@ const Dashboard = () => {
         return "DASHBOARD";
       case "/services":
         return "SERVICES";
+      case "/addService":
+        return "SERVICES";
       case "/reminder":
         return "REMINDER";
       case "/fund":

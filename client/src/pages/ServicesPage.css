@@ -18,8 +18,16 @@
 
 .add-service {
   text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
 }
 
 .add-service:hover {
+  color: var(--purple4);
+}
+
+.add-service:hover .plus-icon {
   color: var(--purple4);
 }
