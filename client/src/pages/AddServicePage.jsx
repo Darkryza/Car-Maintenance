@@ -1,8 +1,9 @@
 import "./addServicePage.css";
+import { Link } from "react-router-dom";
 
 const AddServicePage = () => {
   return (
-    <div className="page addServicePage">
+    <form className="page addServicePage">
       <div className="left">
         <label htmlFor="service">Service</label>
         <input type="text" id="service" />
@@ -36,8 +37,18 @@ const AddServicePage = () => {
             <input type="file" id="receipt" />
           </div>
         </div>
+        <div className="submit-btn-container">
+          <button className="submit-btn">Submit</button>
+        </div>
+        <div className="btn-nav">
+          <div className="back-btn-container">
+            <Link to="/services" className="back-btn">
+              Back
+            </Link>
+          </div>
+        </div>
       </div>
-    </div>
+    </form>
   );
 };
 
