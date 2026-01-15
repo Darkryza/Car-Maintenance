@@ -10,7 +10,64 @@ const ServicesPage = () => {
           Add services
         </Link>
       </div>
-      <div className="table"></div>
+      <div className="table">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <div className="th-data">Type</div>
+              </th>
+              <th>
+                <div className="th-data">Date</div>
+              </th>
+              <th>
+                <div className="th-data">Amount</div>
+              </th>
+              <th>
+                <div className="th-data">Action</div>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Tayar</td>
+              <td>1/2/2026</td>
+              <td>RM200</td>
+              <td>
+                <div className="action-btn">
+                  <span class="material-symbols-outlined">edit</span>
+                  <span class="material-symbols-outlined">delete</span>
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Tayar</td>
+              <td>1/2/2026</td>
+              <td>RM200</td>
+              <td>
+                <div className="action-btn">
+                  <span class="material-symbols-outlined">edit</span>
+                  <span class="material-symbols-outlined">delete</span>
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>Tayar</td>
+              <td>1/2/2026</td>
+              <td>RM200</td>
+              <td>
+                <div className="action-btn">
+                  <span class="material-symbols-outlined">edit</span>
+                  <span class="material-symbols-outlined">delete</span>
+                  <span class="material-symbols-outlined">visibility</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
