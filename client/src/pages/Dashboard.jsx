@@ -63,7 +63,7 @@ const Dashboard = () => {
             Wishlist
           </Link>
           <button className="logout" onClick={handleLogout}>
-            Logout
+            <span class="material-symbols-outlined">logout</span>Logout
           </button>
         </ul>
       </div>

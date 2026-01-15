@@ -66,10 +66,20 @@
 }
 
 .dashboard-sidebar ul .logout {
+  position: absolute;
+  bottom: 50px;
   background-color: transparent;
-  color: red;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: 0.2s ease;
 }
+
+/* .dashboard-sidebar ul .logout span {
+  transition: 0.2s ease;
+} */
 
 .dashboard-sidebar ul .link:hover {
   background-color: rgb(59, 14, 59);
@@ -77,8 +87,13 @@
 }
 
 .dashboard-sidebar ul .logout:hover {
-  background-color: transparent;
-  color: rgb(255, 255, 255);
+  color: var(--purple4);
+  transform: scale(1.2);
+}
+
+.dashboard-sidebar ul .logout:hover span {
+  transition: 0.2s ease;
+  color: var(--purple4);
 }
 
 .content {
