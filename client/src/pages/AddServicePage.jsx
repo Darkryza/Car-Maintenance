@@ -11,7 +11,7 @@ const AddServicePage = () => {
         <label htmlFor="cost">Cost</label>
         <input type="text" id="cost" />
         <label htmlFor="location">Location</label>
-        <input type="text" id="location" />
+        <textarea name="location" id="location"></textarea>
       </div>
       <div className="right">
         <label htmlFor="contact">Contact</label>

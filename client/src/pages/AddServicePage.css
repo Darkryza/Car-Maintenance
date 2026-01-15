@@ -41,7 +41,8 @@ textarea {
   letter-spacing: 2px;
 }
 
-.right textarea {
+.right textarea,
+.left textarea {
   height: 100%;
 }
 
