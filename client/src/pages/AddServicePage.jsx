@@ -37,15 +37,11 @@ const AddServicePage = () => {
             <input type="file" id="receipt" />
           </div>
         </div>
-        <div className="submit-btn-container">
+        <div className="btn-back-submit">
+          <Link to="/services" className="back-btn">
+            Back
+          </Link>
           <button className="submit-btn">Submit</button>
-        </div>
-        <div className="btn-nav">
-          <div className="back-btn-container">
-            <Link to="/services" className="back-btn">
-              Back
-            </Link>
-          </div>
         </div>
       </div>
     </form>
