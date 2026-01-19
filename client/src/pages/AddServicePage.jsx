@@ -16,12 +16,11 @@ const AddServicePage = () => {
   });
   const navigate = useNavigate();
   const handleChange = (e) => {
-    const { name, value, file } = e.target;
+    const { name, value, files } = e.target;
     setValues((prev) => ({
       ...prev,
-      [name]: file ? file[0] : value,
+      [name]: files ? files[0] : value,
     }));
-    console.log(values);
   };
 
   const handleSubmit = async (e) => {
@@ -41,7 +40,7 @@ const AddServicePage = () => {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-        }
+        },
       );
       if (res.data.status) {
         alert(res.data.message);
@@ -101,7 +100,7 @@ const AddServicePage = () => {
           </label>
           <div className="file-input">
             <label htmlFor="receipt" className="select-file-btn">
-              {values.file || "Select File"}
+              {values.file ? values.file.name : "Select File"}
             </label>
             <label htmlFor="receipt" className="upload-file-btn">
               Upload file

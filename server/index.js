@@ -14,9 +14,10 @@ app.use(
   cors({
     origin: process.env.URL,
     credentials: true,
-  })
+  }),
 );
 app.use(cookieParser());
+app.use(express.static("public"));
 
 // routes
 app.use("/auth", authRouter);

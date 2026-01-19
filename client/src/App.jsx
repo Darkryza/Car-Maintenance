@@ -11,6 +11,7 @@ import "./App.css";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import GuestRoute from "./pages/GuestRoute";
 import AddServicePage from "./pages/AddServicePage";
+import ViewServicesPage from "./pages/ViewServicesPage";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
       >
         <Route index element={<HomePage />} />
         <Route path="services" element={<ServicesPage />} />
+        <Route path="/services/view" element={<ViewServicesPage />} />
         <Route path="addService" element={<AddServicePage />} />
         <Route path="reminder" element={<ReminderPage />} />
         <Route path="fund" element={<FundPage />} />
