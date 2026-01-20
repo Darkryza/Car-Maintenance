@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./addServicePage.css";
-import axios from "axios";
+// import axios from "axios";
 
 const AddServicePage = () => {
   const [values, setValues] = useState({
@@ -25,33 +25,35 @@ const AddServicePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const formData = new FormData();
-    Object.entries(values).forEach(([key, value]) => {
-      formData.append(key, value);
+    navigate("/services/preview", {
+      state: values, // hantar semua data
     });
+    // const formData = new FormData();
+    // Object.entries(values).forEach(([key, value]) => {
+    //   formData.append(key, value);
+    // });
 
-    try {
-      const res = await axios.post(
-        "http://localhost:5484/services/addService",
-        formData,
-        {
-          withCredentials: true,
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        },
-      );
-      if (res.data.status) {
-        alert(res.data.message);
-        navigate("/services");
-      } else {
-        alert(res.data.messages);
-      }
-    } catch (err) {
-      console.log(err);
-      alert("Error");
-    }
+    // try {
+    //   const res = await axios.post(
+    //     "http://localhost:5484/services/addService",
+    //     formData,
+    //     {
+    //       withCredentials: true,
+    //       headers: {
+    //         "Content-Type": "multipart/form-data",
+    //       },
+    //     },
+    //   );
+    //   if (res.data.status) {
+    //     alert(res.data.message);
+    //     navigate("/services");
+    //   } else {
+    //     alert(res.data.messages);
+    //   }
+    // } catch (err) {
+    //   console.log(err);
+    //   alert("Error");
+    // }
   };
   return (
     <form className="page addServicePage" onSubmit={handleSubmit}>

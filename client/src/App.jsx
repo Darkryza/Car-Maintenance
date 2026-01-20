@@ -12,6 +12,7 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 import GuestRoute from "./pages/GuestRoute";
 import AddServicePage from "./pages/AddServicePage";
 import ViewServicesPage from "./pages/ViewServicesPage";
+import PreviewServicePage from "./pages/PreviewServicePage";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
         <Route path="services" element={<ServicesPage />} />
         <Route path="/services/view" element={<ViewServicesPage />} />
         <Route path="addService" element={<AddServicePage />} />
+        <Route path="/addService/preview" element={<PreviewServicePage />} />
         <Route path="reminder" element={<ReminderPage />} />
         <Route path="fund" element={<FundPage />} />
         <Route path="wishlist" element={<WishlistPage />} />
