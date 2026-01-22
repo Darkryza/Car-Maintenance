@@ -35,6 +35,7 @@ router.post("/addService", upload.single("file"), (req, res) => {
     });
   } catch (err) {
     console.log(err);
+    return res.json({ status: false, meesage: "Server Error" });
   }
 });
 

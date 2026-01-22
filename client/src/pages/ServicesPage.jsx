@@ -51,7 +51,14 @@ const ServicesPage = () => {
               return (
                 <tr key={item.id}>
                   <td>{item.service}</td>
-                  <td>{new Date(item.date).toLocaleDateString("en-GB")}</td>
+                  <td>
+                    {new Date(item.date).toLocaleDateString("ms-MY", {
+                      weekday: "long",
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </td>
                   <td>RM{item.cost.toFixed(2)}</td>
                   <td>
                     <div className="action-btn">

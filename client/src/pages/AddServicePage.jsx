@@ -25,7 +25,7 @@ const AddServicePage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/services/preview", {
+    navigate("/addService/preview", {
       state: values, // hantar semua data
     });
     // const formData = new FormData();
