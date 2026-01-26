@@ -23,7 +23,7 @@ const ServicesPage = () => {
   return (
     <div className="page service-page">
       <div className="top">
-        <Link className="add-service" to="/addService">
+        <Link className="add" to="/addService">
           <span className="material-symbols-outlined plus-icon">add</span>
           Add services
         </Link>

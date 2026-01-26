@@ -54,7 +54,7 @@ textarea {
   height: 100%;
 }
 
-.left input:last-child {
+.addServicePage .left input:last-child {
   height: 100%;
 }
 
@@ -106,7 +106,8 @@ label.receipt-label {
 
 .file-input .select-file-btn,
 .file-input .upload-file-btn {
-  height: fit-content;
+  height: 100%;
+  overflow: hidden;
   cursor: pointer;
   border: 1px solid var(--purple4);
   padding: 10px 20px;

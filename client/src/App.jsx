@@ -13,6 +13,7 @@ import GuestRoute from "./pages/GuestRoute";
 import AddServicePage from "./pages/AddServicePage";
 import ViewServicesPage from "./pages/ViewServicesPage";
 import PreviewServicePage from "./pages/PreviewServicePage";
+import AddReminderPage from "./pages/AddReminderPage";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Route path="addService" element={<AddServicePage />} />
         <Route path="/addService/preview" element={<PreviewServicePage />} />
         <Route path="reminder" element={<ReminderPage />} />
+        <Route path="addReminder" element={<AddReminderPage />} />
         <Route path="fund" element={<FundPage />} />
         <Route path="wishlist" element={<WishlistPage />} />
       </Route>
