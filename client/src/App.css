@@ -3,6 +3,19 @@ body,
 #root {
   width: 100vw;
   height: 100vh;
+  position: relative;
+}
+
+#root::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.9)), url(../src/assets/bg.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  z-index: -1;
 }
 
 .page {
