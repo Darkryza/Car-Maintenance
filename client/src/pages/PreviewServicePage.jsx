@@ -10,7 +10,8 @@ const PreviewServicePage = () => {
     return <p>No data to preview</p>;
   }
 
-  const handleConfirm = async () => {
+  const handleConfirm = async (e) => {
+    e.preventDefault();
     const formData = new FormData();
     Object.entries(state).forEach(([key, value]) => {
       formData.append(key, value);
@@ -22,7 +23,7 @@ const PreviewServicePage = () => {
         formData,
         { withCredentials: true },
       );
-
+      console.log(res.data);
       if (res.data.status) {
         alert(res.data.message);
         navigate("/services");
