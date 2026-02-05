@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./AddReminderPage.css";
 
 const AddReminderPage = () => {
@@ -10,9 +11,10 @@ const AddReminderPage = () => {
   });
   return (
     <form className="page addReminderPage">
-      <div className="top"></div>
-      <div className="left">
+      <div className="top">
         <h1>New Form</h1>
+      </div>
+      <div className="left">
         <label htmlFor="service">Service</label>
         <input type="text" id="service" />
         <label htmlFor="cost">Cost</label>
@@ -33,8 +35,17 @@ const AddReminderPage = () => {
       <div className="right">
         <label htmlFor="remark">Remark</label>
         <textarea name="remark" id="remark"></textarea>
+        <label htmlFor="status">Status</label>
+        <select name="status" id="status">
+          <option value=""></option>
+          <option value="done">Done</option>
+          <option value="pending">Pending</option>
+        </select>
       </div>
-      <div className="bottom"></div>
+      <div className="bottom">
+        <Link to="/reminder">{"< Back"}</Link>
+        <button>Submit</button>
+      </div>
     </form>
   );
 };
