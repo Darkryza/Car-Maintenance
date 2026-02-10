@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./AddReminderPage.css";
 import axios from "axios";
 
@@ -9,7 +9,11 @@ const AddReminderPage = () => {
     cost: "",
     location: "",
     file: "",
+    status: "",
+    remark: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -27,10 +31,17 @@ const AddReminderPage = () => {
     });
     try {
       const res = await axios.post(
-        "http://localhost:5484/reminder/addReminder",
+        "http://localhost:5484/reminders/addReminder",
         formData,
         { withCredentials: true },
       );
+      if (res.data.status) {
+        alert(res.data.message);
+        navigate("/reminder");
+      } else {
+        console.log(res.data.err);
+        alert("Error from server");
+      }
     } catch (err) {
       console.log(err);
     }
@@ -43,11 +54,21 @@ const AddReminderPage = () => {
       </div>
       <div className="left">
         <label htmlFor="service">Service</label>
-        <input type="text" id="service" onChange={handleChange} />
+        <input
+          type="text"
+          id="service"
+          name="service"
+          onChange={handleChange}
+        />
         <label htmlFor="cost">Cost</label>
-        <input type="text" id="cost" onChange={handleChange} />
+        <input type="text" id="cost" name="cost" onChange={handleChange} />
         <label htmlFor="location">Location</label>
-        <input type="text" id="location" onChange={handleChange} />
+        <input
+          type="text"
+          id="location"
+          name="location"
+          onChange={handleChange}
+        />
         <label htmlFor="receipt">Image</label>
         <div className="file-input">
           <label htmlFor="receipt" className="select-file-btn">
@@ -67,11 +88,11 @@ const AddReminderPage = () => {
       </div>
       <div className="right">
         <label htmlFor="remark">Remark</label>
-        <textarea name="remark" id="remark"></textarea>
+        <textarea name="remark" id="remark" onChange={handleChange}></textarea>
       </div>
       <div className="bottom">
         <Link to="/reminder">{"< Back"}</Link>
-        <button>Submit</button>
+        <button onClick={handleSubmit}>Submit</button>
       </div>
     </div>
   );

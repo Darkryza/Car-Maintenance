@@ -57,4 +57,21 @@ router.get("/getData", verifyToken, (req, res) => {
   }
 });
 
+router.delete("/delete/:id", verifyToken, (req, res) => {
+  try {
+    const { id } = req.params;
+    const query = "DELETE FROM services WHERE id = ?";
+    conn.query(query, [id], (err, result) => {
+      if (err) {
+        console.log(err);
+        return res.json({ status: false, message: "DB Error" });
+      }
+      return res.json({ status: true, message: "Successfully Deleted" });
+    });
+  } catch (err) {
+    console.log(err);
+    return res.json({ status: false, message: "Server error" });
+  }
+});
+
 export { router as serviceRouter };

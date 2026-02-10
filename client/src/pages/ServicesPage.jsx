@@ -5,6 +5,7 @@ import "./ServicesPage.css";
 
 const ServicesPage = () => {
   const [data, setData] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -20,6 +21,9 @@ const ServicesPage = () => {
     };
     fetchData();
   }, []);
+
+  const handleDelete = () => {};
+
   return (
     <div className="page service-page">
       <div className="top">

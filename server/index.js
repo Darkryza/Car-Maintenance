@@ -23,7 +23,7 @@ app.use(express.static("public"));
 // routes
 app.use("/auth", authRouter);
 app.use("/services", serviceRouter);
-app.use("/reminder", reminderRouter);
+app.use("/reminders", reminderRouter);
 
 // start server
 const port = process.env.PORT || 5484;
