@@ -80,7 +80,7 @@ const AddReminderPage = () => {
           <input type="file" id="receipt" name="file" onChange={handleChange} />
         </div>
         <label htmlFor="status">Status</label>
-        <select name="status" id="status">
+        <select name="status" id="status" onChange={handleChange}>
           <option value="">-Select-</option>
           <option value="done">Done</option>
           <option value="pending">Pending</option>
