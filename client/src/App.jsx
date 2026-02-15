@@ -14,10 +14,12 @@ import AddServicePage from "./pages/AddServicePage";
 import ViewServicesPage from "./pages/ViewServicesPage";
 import PreviewServicePage from "./pages/PreviewServicePage";
 import AddReminderPage from "./pages/AddReminderPage";
+import ViewReminder from "./pages/ViewReminder";
 
 function App() {
   return (
     <Routes>
+      {/* Public Route */}
       <Route
         path="/login"
         element={
@@ -34,6 +36,8 @@ function App() {
           </GuestRoute>
         }
       />
+
+      {/* Private Route */}
       <Route
         path="/"
         element={
@@ -47,9 +51,13 @@ function App() {
         <Route path="/services/view" element={<ViewServicesPage />} />
         <Route path="addService" element={<AddServicePage />} />
         <Route path="/addService/preview" element={<PreviewServicePage />} />
+
         <Route path="reminder" element={<ReminderPage />} />
         <Route path="addReminder" element={<AddReminderPage />} />
+        <Route path="/reminder/view" element={<ViewReminder />} />
+
         <Route path="fund" element={<FundPage />} />
+
         <Route path="wishlist" element={<WishlistPage />} />
       </Route>
     </Routes>

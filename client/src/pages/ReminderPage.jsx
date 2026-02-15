@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./ReminderPage.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const ReminderPage = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -39,6 +40,11 @@ const ReminderPage = () => {
       alert("Delete Failed");
     }
   };
+  const handleView = (item) => {
+    navigate("/reminder/view", {
+      state: item,
+    });
+  };
   return (
     <div className="page ReminderPage">
       <div className="top">
@@ -51,7 +57,9 @@ const ReminderPage = () => {
         {data.map((item) => {
           return (
             <div className="reminder-container" key={item.id}>
-              <div className="reminder">{item.service}</div>
+              <div onClick={() => handleView(item)} className="reminder">
+                {item.service}
+              </div>
               <span
                 className="material-symbols-outlined"
                 onClick={() => handleDelete(item.id)}
@@ -61,18 +69,6 @@ const ReminderPage = () => {
             </div>
           );
         })}
-        {/* <div className="reminder-container">
-          <div className="reminder">Check dan tukar minyak hitam & gearbox</div>
-          <span className="material-symbols-outlined">delete</span>
-        </div>
-        <div className="reminder-container">
-          <div className="reminder">Check dan tukar minyak hitam & gearbox</div>
-          <span className="material-symbols-outlined">delete</span>
-        </div>
-        <div className="reminder-container">
-          <div className="reminder">Check dan tukar minyak hitam & gearbox</div>
-          <span className="material-symbols-outlined">delete</span>
-        </div> */}
       </div>
     </div>
   );

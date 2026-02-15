@@ -22,7 +22,25 @@ const ServicesPage = () => {
     fetchData();
   }, []);
 
-  const handleDelete = () => {};
+  const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("Are you sure want to delete");
+    if (!confirmDelete) return;
+    try {
+      const res = await axios.delete(
+        `http://localhost:5484/services/delete/${id}`,
+        { withCredentials: true },
+      );
+      if (res.data.status) {
+        alert(res.data.message);
+        setData((prev) => prev.filter((item) => item.id !== id));
+      } else {
+        console.log(res.data.message);
+      }
+    } catch (err) {
+      console.log(err);
+      alert("Delete failed");
+    }
+  };
 
   return (
     <div className="page service-page">
@@ -67,7 +85,12 @@ const ServicesPage = () => {
                   <td>
                     <div className="action-btn">
                       <span className="material-symbols-outlined">edit</span>
-                      <span className="material-symbols-outlined">delete</span>
+                      <span
+                        className="material-symbols-outlined"
+                        onClick={() => handleDelete(item.id)}
+                      >
+                        delete
+                      </span>
                       <Link to="/services/view">
                         <span className="material-symbols-outlined">
                           visibility
