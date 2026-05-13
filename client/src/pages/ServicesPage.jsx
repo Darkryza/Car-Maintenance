@@ -42,8 +42,8 @@ const ServicesPage = () => {
     }
   };
 
-  const handleView = (index) => {
-    nav("/services/view", { state: data[index] });
+  const handleView = (item) => {
+    nav("/services/view", { state: item });
   };
 
   return (
@@ -98,7 +98,7 @@ const ServicesPage = () => {
                       <div
                         className="viewSymbol"
                         onClick={() => {
-                          handleView(item.id);
+                          handleView(item);
                         }}
                       >
                         <span className="material-symbols-outlined">
