@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./ServicesPage.css";
 
 const ServicesPage = () => {
   const [data, setData] = useState([]);
-
+  const nav = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -40,6 +40,10 @@ const ServicesPage = () => {
       console.log(err);
       alert("Delete failed");
     }
+  };
+
+  const handleView = (index) => {
+    nav("/services/view", { state: data[index] });
   };
 
   return (
@@ -91,11 +95,16 @@ const ServicesPage = () => {
                       >
                         delete
                       </span>
-                      <Link to="/services/view">
+                      <div
+                        className="viewSymbol"
+                        onClick={() => {
+                          handleView(item.id);
+                        }}
+                      >
                         <span className="material-symbols-outlined">
                           visibility
                         </span>
-                      </Link>
+                      </div>
                     </div>
                   </td>
                 </tr>
